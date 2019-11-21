@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t kylelicode/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker -e CI=true run kylelicode/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t kylelicode/multi-client ./client
+  - docker build -t kylelicode/multi-nginx ./nginx
+  - docker build -t kylelicode/multi-server ./server
+  - docker build -t kylelicode/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push kylelicode/multi-client
+  - docker push kylelicode/multi-nginx
+  - docker push kylelicode/multi-server
+  - docker push kylelicode/multi-worker
+
