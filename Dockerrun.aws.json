@@ -2,9 +2,9 @@
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
         {
-            "name": "client",
-            "image": "kylelicode/multi-client",
-            "hostname": "client",
+            "name": "server",
+            "image": "kylelicode/multi-server",
+            "hostname": "api",
             "essential": true,
             "memory": 128
         }
