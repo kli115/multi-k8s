@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import isArray from 'lodash/isArray';
+import isObject from 'lodash/isObject';
+import isString from 'lodash/isString';
 
 const Fib = () => {
     const [seenIndexes, setSeenIndexes] = useState([])
@@ -38,13 +41,15 @@ const Fib = () => {
                 >Submit</button>
             </form>
             <h3>Indexes I have seen:</h3>
-            {seenIndexes.map(({ number }) => number).join(', ')}
+            {isArray(seenIndexes) && seenIndexes.map(({ number }) => number).join(', ')}
+            {isString(seenIndexes) && seenIndexes}
             <h3>Calculated values:</h3>
-            {Object.entries(values).map(([index, value]) =>
+            {isObject(values) && Object.entries(values).map(([index, value]) =>
                 <div key={index}>
                     For index {index} I calculated {value}
                 </div>
             )}
+            {isString(values) && values}
         </div>
     )
 }
