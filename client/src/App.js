@@ -22,7 +22,7 @@ function App() {
           >
             Learn React
           </a> */}
-          <Link to="/" style={{marginRight: '10vw'}}>Home</Link>
+          <Link to="/" style={{marginRight: '10vw'}}>Home in Kubernetes!</Link>
           <Link to="/otherpage">Other Page</Link>
         </header>
         <div>
