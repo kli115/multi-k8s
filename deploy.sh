@@ -1,6 +1,6 @@
 docker build -t kylelicode/multi-client:latest -t kylelicode/multi-client:$SHA -f ./client/Dockerfile ./client
 docker build -t kylelicode/multi-server:latest -t kylelicode/multi-server:$SHA -f ./server/Dockerfile ./server
-docker build -t kylelicode/multi-worker:latest -t kylelicode/multi-worker:$SHA -f ./worker/Doockerfile ./worker
+docker build -t kylelicode/multi-worker:latest -t kylelicode/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
 docker push kylelicode/multi-client:latest
 docker push kylelicode/multi-client:$SHA
